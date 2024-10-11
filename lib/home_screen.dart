@@ -22,10 +22,10 @@ class HomeScreen extends StatelessWidget {
                             margin: const EdgeInsets.all(16),
                             padding: const EdgeInsets.all(16),
                             color: Colors.black12,
-                            child: const Text('Hello World!'),
                             height: 100,
                             width: 50,
                             alignment: Alignment.bottomCenter,
+                            child: const Text('Hello World!'),
                         ) ,
                       ),
                     );
@@ -33,50 +33,25 @@ class HomeScreen extends StatelessWidget {
                 )
             ],
         ),
-        body: Column(
-          children: [
-            Flexible(
-              child: Container(
-                color: Colors.orange,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        child: Container(
-                          color: Colors.orange,
-                          alignment: Alignment.center,
-                          child: const Text(
-                            'Selamat Datang',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        color: Colors.black54,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Flexible(
-              child: Container(
-                color: Colors.green,
-              ),
-            ),
-            Flexible(
-              child: Container(
-                color: Colors.lightGreenAccent,
-              ),
-            ),
-          ],
+        body: GridView(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
         ),
-            );
+        children: List.generate(
+        100,
+        (index) => Container(
+          color: Colors.deepPurple,
+          child: Center(
+            child: Text(
+              '$index',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+        ),
+      ),
+    ),
+    );
   }
 }
